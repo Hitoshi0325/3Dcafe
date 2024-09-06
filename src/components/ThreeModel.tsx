@@ -2,6 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import * as THREE from "three";
 
 const Model = ({
   url,
@@ -15,7 +16,7 @@ const Model = ({
   rotation: number[];
 }) => {
   const { scene } = useGLTF(url);
-  const groupRef = useRef(null);
+  const groupRef = useRef<THREE.Group>(null!);
 
   useFrame((state) => {
     if (groupRef.current) {
